@@ -17,12 +17,12 @@ bus.data.options.set_manual(diameter=4.)
 
 data = requests.get('https://raw.githubusercontent.com/kammerje/P-pop/main/TestPlanetPopulation.txt')
 
-with open('path/ppop_catalog.txt', 'wb') as file:
+with open('C:\Work\MSA\LIFEsim-Rick_Branch/ppop_catalog.txt', 'wb') as file:
     file.write(data.content)
 
 # ---------- Loading the Catalog ----------
 
-bus.data.catalog_from_ppop(input_path='path/ppop_catalog.txt')
+bus.data.catalog_from_ppop(input_path='C:\Work\MSA\LIFEsim-Rick_Branch/ppop_catalog.txt')
 bus.data.catalog_remove_distance(stype=0, mode='larger', dist=0.)  # remove all A stars
 bus.data.catalog_remove_distance(stype=4, mode='larger', dist=10.)  # remove M stars > 10pc to
 # speed up calculation
@@ -76,11 +76,11 @@ opt.ahgs()
 
 # ---------- Saving the Results ----------
 
-bus.data.export_catalog(output_path='path/filename.hdf5')
+bus.data.export_catalog(output_path='C:\Work\MSA\LIFEsim-Rick_Branch/demo1.hdf5')
 
 
 # ---------- Reading the Results ----------
 # import a previously saved catalog
 bus_read = lifesim.Bus()
 bus_read.data.options.set_scenario('baseline')
-bus_read.data.import_catalog(input_path='path/filename.hdf5')
+bus_read.data.import_catalog(input_path='C:\Work\MSA\LIFEsim-Rick_Branch/demo1.hdf5')

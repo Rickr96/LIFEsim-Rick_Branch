@@ -56,6 +56,9 @@ class Instrument(InstrumentModule):
     data.inst['radius_map'] : np.ndarray
         A map used for speeding up calculations. Contains the distance of a pixel
         from the center of the detector in [pix].
+    data.inst['jwst_localzodi'] : np.ndarray
+        Pre-calculated localzodi background for whole sky, at integer wavelengths (3-20 microns)
+        in [photons/(sr m s)]. E.g. [k, :, :] provides skymap for wavelength of k+3 microns
     """
 
     def __init__(self,
@@ -118,6 +121,8 @@ class Instrument(InstrumentModule):
                         + (y_map - (self.data.options.other['image_size'] - 1) / 2) ** 2)
         self.data.inst['radius_map'] = np.sqrt(r_square_map)
 
+        # load localzodi background data for calculations with jwst model
+        self.data.inst['jwst_localzodi'] = np.load('JWST_localzodi.npy')
     def get_wl_bins_const_spec_res(self):
         """
         Create the wavelength bins for the given spectral resolution and wavelength limits.

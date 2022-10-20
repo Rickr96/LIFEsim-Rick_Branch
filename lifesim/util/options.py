@@ -40,8 +40,8 @@ class Options(object):
             - ``'n_plugins'`` : Number of sockets the instrument class will feature.
     models : dict
         Options concerning different models used in the simulation. They are
-            - ``'localzodi'`` : Model for the localzodi, possible options are ``'glasse'`` and
-              ``'darwinsim'``
+            - ``'localzodi'`` : Model for the localzodi, possible options are ``'glasse'``,
+              ```'darwinsim'`` and ``'jwst'``.
             - ``'habitable'`` : Model used for calculating the habitable zone, possible options are
               ``'MS'`` and ``'POST_MS'``
     optimization : dict
@@ -110,7 +110,8 @@ class Options(object):
         self.other['wl_optimal'] = 15
         self.other['n_plugins'] = 5
 
-        self.models['localzodi'] = 'darwinsim'
+        # TODO ======= Manually Change the Baseline local Zodi Model here =======
+        self.models['localzodi'] = 'jwst'
         self.models['habitable'] = 'MS'
 
         self.optimization['N_pf'] = 25
