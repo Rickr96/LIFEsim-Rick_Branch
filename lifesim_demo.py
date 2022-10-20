@@ -33,11 +33,11 @@ bus.data.catalog_remove_distance(stype=4, mode='larger', dist=10.)  # remove M s
 instrument = lifesim.Instrument(name='inst')
 bus.add_module(instrument)
 
-#transm = lifesim.TransmissionMap(name='transm')
-#bus.add_module(transm)
+transm = lifesim.TransmissionMap(name='transm')
+bus.add_module(transm)
 
-orb_transm = lifesim.OrbitalTransmissionMap(name='orb_transm')
-bus.add_module(orb_transm)
+#orb_transm = lifesim.OrbitalTransmissionMap(name='orb_transm')
+#bus.add_module(orb_transm)
 
 exo = lifesim.PhotonNoiseExozodi(name='exo')
 bus.add_module(exo)
@@ -47,14 +47,14 @@ star = lifesim.PhotonNoiseStar(name='star')
 bus.add_module(star)
 
 # connect all modules
-bus.connect(('inst','orb_transm'))
-#bus.connect(('inst', 'transm'))
+#bus.connect(('inst','orb_transm'))
+bus.connect(('inst', 'transm'))
 bus.connect(('inst', 'exo'))
 bus.connect(('inst', 'local'))
 bus.connect(('inst', 'star'))
 
-bus.connect(('star','orb_transm'))
-#bus.connect(('star', 'transm'))
+#bus.connect(('star','orb_transm'))
+bus.connect(('star', 'transm'))
 
 # ---------- Creating the Optimizer ----------
 # After every planet is given an SNR, we want to distribute the time available in the search phase
@@ -66,8 +66,8 @@ bus.add_module(opt)
 ahgs = lifesim.AhgsModule(name='ahgs')
 bus.add_module(ahgs)
 
-bus.connect(('orb_transm','opt'))
-#bus.connect(('transm', 'opt'))
+#bus.connect(('orb_transm','opt'))
+bus.connect(('transm', 'opt'))
 bus.connect(('inst', 'opt'))
 bus.connect(('opt', 'ahgs'))
 
@@ -82,11 +82,13 @@ opt.ahgs()
 
 # ---------- Saving the Results ----------
 
-bus.data.export_catalog(output_path='C:\Work\MSA\LIFEsim-Rick_Branch/demo1.hdf5')
+bus.data.export_catalog(output_path='C:\Work\MSA\LIFEsim-Rick_Branch/Baseline.hdf5')
 
 
 # ---------- Reading the Results ----------
 # import a previously saved catalog
+"""
 bus_read = lifesim.Bus()
 bus_read.data.options.set_scenario('baseline')
 bus_read.data.import_catalog(input_path='C:\Work\MSA\LIFEsim-Rick_Branch/demo1.hdf5')
+"""

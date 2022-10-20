@@ -120,7 +120,7 @@ class Options(object):
         self.other['n_plugins'] = 5
 
         # TODO ======= Manually Change the Baseline local Zodi Model here =======
-        self.models['localzodi'] = 'jwst'
+        self.models['localzodi'] = 'darwinsim'
         self.models['habitable'] = 'MS'
 
         self.optimization['N_pf'] = 25
@@ -156,7 +156,7 @@ class Options(object):
         ----------
         kwargs : dict
             Dictionary containing the options with the option name as key and the option itself as
-            value. E.g. ``kwarg = {'diameter': 2., 'n_plugins': 3, 'localzodi': 'glasse'}``
+            value. E.g. ``kwarg = {'diameter': 2., 'n_plugins': 3, 'localzodi': 'glasse', 'jwst'}``
 
         Raises
         ------
