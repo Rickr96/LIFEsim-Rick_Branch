@@ -151,7 +151,7 @@ class TransmissionMap(TransmissionModule):
         return tm1, tm2, tm3, tm4, tm_chop
 
     def transmission_efficiency(self,
-                                index: Union[int, type(None)]):
+                                index: Union[int, None]):
         """
         Integrates over transmission curves to get the transmission efficiency for signal and
         noise.
@@ -161,7 +161,7 @@ class TransmissionMap(TransmissionModule):
         index: Union[int, type(None)]
             Specifies the planet for which to calculate the transmission efficiency. If an integer
             n is given, the noise will be calculated for the n-th row in the `data.catalog`. If
-            `None` is given, the noise is caluculated for the parameters located in `data.single`.
+            `None` is given, the noise is calculated for the parameters located in `data.single`.
 
         Returns
         -------

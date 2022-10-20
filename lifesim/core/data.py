@@ -4,7 +4,6 @@ import warnings
 import numpy as np
 import pandas as pd
 from astropy.io import fits
-from astropy.table import Table
 from astropy.coordinates import SkyCoord, BarycentricMeanEcliptic
 
 from lifesim.util.options import Options
@@ -39,6 +38,7 @@ class Data(object):
         self.other = {}
         self.options = Options()
         self.optm = {}
+
 
     def catalog_delete(self):
         self.catalog = None
