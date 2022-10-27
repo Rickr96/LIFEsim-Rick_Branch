@@ -228,7 +228,7 @@ class Instrument(InstrumentModule):
         # for any integration time can be calculated by knowing the SNR of a specific integration
         # time
         #TODO: In stoephu: integration_time = 60 * 60 * self.data.options.array['rotation_period'] --> Investigate Difference
-        integration_time = 60 * 60
+        integration_time = 60 * 60 * self.data.options.array['rotation_period']
 
         self.data.catalog['snr_1h'] = np.zeros_like(self.data.catalog.nstar, dtype=float)
         self.data.catalog['baseline'] = np.zeros_like(self.data.catalog.nstar, dtype=float)
