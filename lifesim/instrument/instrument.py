@@ -197,7 +197,7 @@ class Instrument(InstrumentModule):
             If set to true, function will print a warning if the specified baseline lies outside
             the allow baseline range.
         """
-        # make sure that the baseline does not exeed the set baseline limits
+        # make sure that the baseline does not exceed the set baseline limits
         self.data.inst['bl'] = np.maximum(baseline,
                                           self.data.options.array['bl_min'])
         self.data.inst['bl'] = np.minimum(baseline,

@@ -120,7 +120,7 @@ class Options(object):
         self.other['n_plugins'] = 5
 
         # TODO ======= Manually Change the Baseline local Zodi Model here =======
-        self.models['localzodi'] = 'darwinsim'
+        self.models['localzodi'] = 'jwst'
         self.models['habitable'] = 'MS'
 
         self.optimization['N_pf'] = 25
