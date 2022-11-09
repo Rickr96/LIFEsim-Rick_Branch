@@ -29,7 +29,7 @@ class OrbitalTransmissionMap(TransmissionMap):
 
     def get_transmission_curve(self, index, time_dependent=True, phi_n=360):
         """
-        Calculates the radial transmission curve of the LIFE array for a orbiting exoplanet.
+        Calculates the radial transmission curve of the LIFE array for an orbiting exoplanet.
 
         Parameters
         ----------
@@ -56,14 +56,17 @@ class OrbitalTransmissionMap(TransmissionMap):
         theta = self.data.catalog["theta_p"].iloc[index]
         inclination = self.data.catalog["inc_p"].iloc[index]
         n_rotations = self.data.options.array["rotations"]
+
         rotation_steps = phi_n
         angsep_rad = angsep / (3600 * 180) * np.pi
+
         if time_dependent:
             true_anom = self.data.catalog.iloc[index]["theta_p"]
 
             # period of planet orbit in days
             p_orb = self.data.catalog.iloc[index]["p_orb"]
 
+            # TODO: Rotation Period so far was not Seconds! Needs fixing!
             # Instrument rotation period 1h/ 5h / 20h / (12h) in seconds
             rotation_period = self.data.options.array["rotation_period"]
 

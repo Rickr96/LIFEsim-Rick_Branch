@@ -232,6 +232,8 @@ class Instrument(InstrumentModule):
 
         self.data.catalog['snr_1h'] = np.zeros_like(self.data.catalog.nstar, dtype=float)
         self.data.catalog['baseline'] = np.zeros_like(self.data.catalog.nstar, dtype=float)
+        self.data.catalog['transm_eff'] = np.zeros_like(self.data.catalog.nstar, dtype=float)
+
         if save_mode:
             self.data.catalog['noise_astro'] = None
             self.data.catalog['planet_flux_use'] = None
@@ -310,6 +312,7 @@ class Instrument(InstrumentModule):
                     transm_eff, transm_noise = self.run_socket(s_name='transmission',
                                                                method='transmission_efficiency',
                                                                index=n_p)
+                    self.data.catalog['transm_eff'] = transm_eff
 
                     # calculate the signal and photon noise flux received from the planet
                     flux_planet = (flux_planet_thermal
