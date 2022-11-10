@@ -35,9 +35,7 @@ bus.add_module(instrument)
 # TransmissionMap is the "normal" transmission mode without planet movement.
 # It is mutually exclusive with OrbitalTransmissionMap
 
-#transm = lifesim.TransmissionMap(name='transm')
-#bus.add_module(transm)
-
+#orb_transm = lifesim.TransmissionMap(name='transm')
 
 # OrbitalTransmissionMap is including planet movement.
 # It is mutually exclusive with TransmissionMap
@@ -85,7 +83,7 @@ opt.ahgs()
 
 # ---------- Saving the Results ----------
 
-bus.data.export_catalog(output_path='C:\Work\MSA\LIFEsim-Rick_Branch/PM_and_LZ_ON.hdf5')
+bus.data.export_catalog(output_path='C:\Work\MSA\LIFEsim-Rick_Branch/Baseline.hdf5')
 
 
 # ---------- Reading the Results ----------

@@ -312,7 +312,8 @@ class Instrument(InstrumentModule):
                     transm_eff, transm_noise = self.run_socket(s_name='transmission',
                                                                method='transmission_efficiency',
                                                                index=n_p)
-                    self.data.catalog['transm_eff'] = transm_eff
+
+                    self.data.catalog['transm_eff'].iat[n_p] = np.sqrt((transm_eff ** 2).sum())
 
                     # calculate the signal and photon noise flux received from the planet
                     flux_planet = (flux_planet_thermal
