@@ -112,7 +112,7 @@ class Options(object):
         self.array['ratio'] = 6.
         self.array['t_slew'] = 10. * 60. * 60.
         self.array['t_efficiency'] = 0.8
-        self.array['rotation_period'] = 1.
+        self.array['rotation_period'] = 24*60*60. #unit [s]
         self.array['rotations'] = 1
 
         self.other['image_size'] = 256  # TODO: or 512?
