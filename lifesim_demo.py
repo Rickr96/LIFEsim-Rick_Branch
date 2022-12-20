@@ -35,7 +35,7 @@ bus.add_module(instrument)
 # TransmissionMap is the "normal" transmission mode without planet movement.
 # It is mutually exclusive with OrbitalTransmissionMap
 
-#orb_transm = lifesim.TransmissionMap(name='transm')
+#transm = lifesim.TransmissionMap(name='transm')
 
 # OrbitalTransmissionMap is including planet movement.
 # It is mutually exclusive with TransmissionMap
