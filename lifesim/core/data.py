@@ -255,7 +255,7 @@ class Data(object):
 
         # check the format of the input file
         elif input_path[-5:] == '.fits':
-            hdu = fits.open(input_path)
+            hdu = fits.open(input_path, ignore_missing_end=True)
             stype_int = np.zeros_like(hdu[1].data.Nstar.astype(int), dtype=int)
             for _, k in enumerate(self.other['stype_key'].keys()):
                 stype_int[hdu[1].data.Stype.astype(str) == k] = self.other['stype_key'][k]
