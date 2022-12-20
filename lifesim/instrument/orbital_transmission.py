@@ -66,7 +66,6 @@ class OrbitalTransmissionMap(TransmissionMap):
             # period of planet orbit in days
             p_orb = self.data.catalog.iloc[index]["p_orb"]
 
-            # TODO: Rotation Period so far was not Seconds! Needs fixing!
             # Instrument rotation period 1h/ 5h / 20h / (12h) in seconds
             rotation_period = self.data.options.array["rotation_period"]
 
