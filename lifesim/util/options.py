@@ -38,6 +38,7 @@ class Options(object):
               detector will be simulated with 512^2 pixels.
             - ``'wl_optimal'`` : The wavelength to which the baseline is optimized in [micron].
             - ``'n_plugins'`` : Number of sockets the instrument class will feature.
+            - ``'n_processes'`` : Number of processes used for parallelization.
     models : dict
         Options concerning different models used in the simulation. They are
             - ``'localzodi'`` : Model for the localzodi, possible options are ``'glasse'`` and
@@ -73,7 +74,8 @@ class Options(object):
 
         self.other = {'image_size': 0,
                       'wl_optimal': 0.,
-                      'n_plugins': 0}
+                      'n_plugins': 0,
+                      'n_processes': 1}
 
         self.models = {'localzodi': '',
                        'habitable': ''}
