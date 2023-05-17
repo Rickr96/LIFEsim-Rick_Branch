@@ -215,7 +215,7 @@ class Instrument(InstrumentModule):
              self.data.options.array['ratio'] * self.data.inst['bl'] / 2., 1.]
         ])
 
-    def parallel_helper_func(self, start, end, star_mask, save_mode):
+    def parallel_helper_func(self, start, end, star_mask, save_mode, event):
         """
         Helper function for parallelization of the noise calculation. Its simply the for loop copied that
         was previously in the main body of the function get_snr. The start and end parameters are used to
@@ -335,6 +335,8 @@ class Instrument(InstrumentModule):
                                                                            / integration_time
                                                                            / self.data.inst['eff_tot']).sum()
 
+        event.set()
+
     def get_snr(self,
                 save_mode: bool = False):
         """
@@ -364,7 +366,7 @@ class Instrument(InstrumentModule):
 
         # Manually added multiprocessing by Rick
 
-        processes = []
+        processes, events = [], []
         n_processes = 4  # TODO: Adjust here for more processes running in parallel
         sim_per_process = len(np.where(star_mask)[0]) // n_processes
         remaining_sims = len(np.where(star_mask)[0]) % n_processes
@@ -375,15 +377,19 @@ class Instrument(InstrumentModule):
             else:
                 end = start + sim_per_process
 
-            p = mp.Process(target=self.parallel_helper_func, args=(start, end, star_mask, save_mode))
+            e = mp.Event()
+            p = mp.Process(target=self.parallel_helper_func, args=(start, end, star_mask, save_mode, e))
             processes.append(p)
             p.start()
-
+            events.append(e)
             start = end
+            print("SNR1h", self.data.catalog.snr_1h)
+
+        for event in events:
+            event.wait()
 
         for process in processes:
             process.join()
-
 
     # TODO: fix units in documentation
     def get_spectrum(self,
