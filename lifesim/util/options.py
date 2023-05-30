@@ -75,7 +75,7 @@ class Options(object):
         self.other = {'image_size': 0,
                       'wl_optimal': 0.,
                       'n_plugins': 0,
-                      'n_processes': 1}
+                      'n_processes': 4}
 
         self.models = {'localzodi': '',
                        'habitable': ''}

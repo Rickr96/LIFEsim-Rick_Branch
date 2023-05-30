@@ -334,6 +334,8 @@ class Data(object):
                                              'name_s': pd.Series(['None']*hdu[1].data.shape[0], dtype=pd.StringDtype())})
             hdu.close()
 
+        elif input_path[-5:] == '.hdf5':
+            self.catalog = pd.read_hdf(input_path, key='catalog')
         # create mask returning only unique stars
         _, temp = np.unique(self.catalog.nstar, return_index=True)
         star_mask = np.zeros_like(self.catalog.nstar, dtype=bool)
